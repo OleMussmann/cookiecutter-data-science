@@ -9,8 +9,8 @@ S3_BUCKET = {{ cookiecutter.s3_bucket }}
 AWS_PROFILE = {{ cookiecutter.aws_profile }}
 PROJECT_NAME = {{ cookiecutter.repo_name }}
 PYTHON_INTERPRETER = {{ cookiecutter.python_interpreter }}
-GCS_BUCKET = {{ cookiecuuter.gcs_bucket }}
-GCP_PROJECT = {{ cookiecuuter.gcp_project }}
+GCS_BUCKET = {{ cookiecutter.gcs_bucket }}
+GCP_PROJECT = {{ cookiecutter.gcp_project }}
 
 #################################################################################
 # COMMANDS                                                                      #
