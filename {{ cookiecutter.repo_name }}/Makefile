@@ -75,7 +75,9 @@ sync-data-to-gcs:
 ifeq (default,$(GCP_PROJECT))
 	gsutil rsync data/ gs://$(GCS_BUCKET)/data
 else
-	gsutil rsync data/ gs://$(GCS_BUCKET)/data -p $(GCP_PROJECT)
+	gcloud config set project $(GCP_PROJECT)
+	gsutil rsync data/ gs://$(GCS_BUCKET)/data
+	echo "\nWARNING: Please note that your default GCP project has changed to $(GCP_PROJECT)"
 endif
 
 ## Download Data to GCS
@@ -83,7 +85,9 @@ sync-data-from-gcs:
 ifeq (default,$(GCP_PROJECT))
 	gsutil rsync gs://$(GCS_BUCKET)/data data/
 else
-	gsutil rsync gs://$(GCS_BUCKET)/data data/ -p $(GCP_PROJECT)
+	gcloud config set project $(GCP_PROJECT)
+	gsutil rsync gs://$(GCS_BUCKET)/data data/
+	echo "\nWARNING: Please note that your default GCP project has changed to $(GCP_PROJECT)"
 endif
 
 
