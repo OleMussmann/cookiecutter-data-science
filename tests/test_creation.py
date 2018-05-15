@@ -41,8 +41,8 @@ def test_license(default_baked_project):
     assert no_curlies(license_path)
 
 
-def test_requirements(default_baked_project):
-    reqs_path = default_baked_project / 'requirements.txt'
+def test_pipfile(default_baked_project):
+    reqs_path = default_baked_project / 'Pipfile'
 
     assert reqs_path.exists()
     assert no_curlies(reqs_path)
