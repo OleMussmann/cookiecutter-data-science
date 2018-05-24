@@ -10,6 +10,8 @@ name = "pypi"
 pytest = "*"
 mypy = "*"
 pytest-cov = "*"
+nbstripout = "*"
+jupyter = "*"
 
 [requires]
 python_version = "3.6"

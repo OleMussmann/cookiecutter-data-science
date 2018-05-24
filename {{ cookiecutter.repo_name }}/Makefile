@@ -1,4 +1,4 @@
-.PHONY: clean data lint install-deps install-deps-all test test-cov test-all type-check sync-data-to-s3 sync-data-from-s3 sync-data-to-gcs sync-data-from-gcs
+.PHONY: clean data lint install-deps install-deps-all test test-cov test-all type-check sync-data-to-s3 sync-data-from-s3 sync-data-to-gcs sync-data-from-gcs model prediction deployment
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -52,7 +52,19 @@ data: install-deps-all
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
+	find ./notebooks -name '*.ipynb' -exec pipenv run nbstripout {} \;
 
+## Trains and saves the model
+model:
+	echo "This needs to be implemented"
+
+## Loads model and makes predictions on data
+prediction:
+	echo "This needs to be implemented"
+
+## Deploys model
+deployment:
+	echo "This needs to be implemented"
 
 ## Upload Data to S3
 sync-data-to-s3:
@@ -73,20 +85,20 @@ endif
 ## Upload Data to GCS
 sync-data-to-gcs:
 ifeq (default,$(GCP_PROJECT))
-	gsutil rsync data/ gs://$(GCS_BUCKET)/data
+	gsutil rsync -r data/ gs://$(GCS_BUCKET)/data
 else
 	gcloud config set project $(GCP_PROJECT)
-	gsutil rsync data/ gs://$(GCS_BUCKET)/data
+	gsutil rsync -r data/ gs://$(GCS_BUCKET)/data
 	echo "\nWARNING: Please note that your default GCP project has changed to $(GCP_PROJECT)"
 endif
 
 ## Download Data to GCS
 sync-data-from-gcs:
 ifeq (default,$(GCP_PROJECT))
-	gsutil rsync gs://$(GCS_BUCKET)/data data/
+	gsutil rsync -r gs://$(GCS_BUCKET)/data data/
 else
 	gcloud config set project $(GCP_PROJECT)
-	gsutil rsync gs://$(GCS_BUCKET)/data data/
+	gsutil rsync -r gs://$(GCS_BUCKET)/data data/
 	echo "\nWARNING: Please note that your default GCP project has changed to $(GCP_PROJECT)"
 endif
 
