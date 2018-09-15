@@ -38,7 +38,7 @@ $ conda install cookiecutter
 The directory structure of your new project looks like this: 
 
 ```
-├── LICENSE
+└── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
     ├── README.md          <- The top-level README for developers using this project.
     ├── data
@@ -61,7 +61,7 @@ The directory structure of your new project looks like this:
     │   └── figures        <- Generated graphics and figures to be used in reporting
     │
     ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
+    └── src                <- Source code for use in this project.
         ├── __init__.py    <- Makes src a Python module
         │
         ├── data           <- Scripts to download or generate data
