@@ -8,6 +8,9 @@ mkdocs = "*"
 mkdocs-cinder = "*"
 cookiecutter = "*"
 pytest = "*"
+click = "*"
+python-dotenv = "*"
+sphinx = "*"
 
 [dev-packages]
 
